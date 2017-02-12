@@ -1,0 +1,15 @@
+{
+    "name": "inri13666/phar-phpexcel",
+    "type": "library",
+    "require": {
+        "phpoffice/phpexcel": "1.8.1"
+    },
+    "license": "WTFPL",
+    "authors": [
+        {
+            "name": "Nikita Makarov",
+            "email": "mesaverde228@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
