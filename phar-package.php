@@ -7,7 +7,7 @@ if (!is_dir(__DIR__ . DS . 'compiled')) {
     };
 }
 
-$ver = @file_get_contents(__DIR__ . DS . 'libs' . DS . 'Classes' . DS . 'PHPExcel.php');
+$ver = @file_get_contents(dirname(__FILE__) . DS . 'vendor/phpoffice/phpexcel/Classes/PHPExcel.php');
 preg_match_all('/^.*@version.*$/im', $ver, $matches);
 if (count($matches)) {
     $to_eval = trim($matches[0][0]);
@@ -21,7 +21,7 @@ if (count($matches)) {
     define('VERSION', 'unknown');
 };
 
-$filename = __DIR__ . DS . 'compiled' . DS . 'phpexcel';
+$filename = dirname(__FILE__) . DS . 'compiled' . DS . 'phpexcel';
 
 /**
  * Remove Previous Compiled Archives
@@ -31,8 +31,8 @@ if (is_readable($filename)) {
 }
 
 $archive = new Phar($filename . '.phar', 0, 'PHPExcel');
-$archive->buildFromDirectory('libs');
-$bootstrap = file_get_contents(__DIR__ . DS . 'phar-bootstrap.php');
+$archive->buildFromDirectory('vendor');
+$bootstrap = file_get_contents(dirname(__FILE__) . DS . 'phar-bootstrap.php');
 $archive->setStub($bootstrap);
 $archive = null;
 unset($archive);
